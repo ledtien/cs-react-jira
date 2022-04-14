@@ -3,15 +3,15 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoadingComponent from "./components/GlobalSetting/Loading/LoadingComponent";
-import Header from "./components/Home/Header/Header";
+import DrawerJira from "./HOC/JiraHOC/DrawerJira";
 import AboutPage from "./pages/About/AboutPage";
 import CreateProjects from "./pages/CloneJira/CreateProjects/CreateProjects";
-import indexJira from "./pages/CloneJira/indexJira";
+import DetailJira from "./pages/CloneJira/indexJira";
 import LoginJira from "./pages/CloneJira/LoginJira/LoginJira";
+import ProjectDetail from "./pages/CloneJira/ProjectDetail/ProjectDetail";
 import ProjectManagement from "./pages/CloneJira/ProjectManagement/ProjectManagement";
 import ContactPage from "./pages/Contact/ContactPage";
 import HomePage from "./pages/Home/HomePage";
-import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import { HomeTemPlate } from "./templates/HomeTemplate";
 import { JiraTemplate } from "./templates/JiraTemplate";
@@ -27,20 +27,22 @@ function App() {
 
   return (
     <>
+      <DrawerJira />
       <LoadingComponent />
       <Switch>
-        <HomeTemPlate path="/" Component={HomePage} exact />
-        <HomeTemPlate path="/contact" Component={ContactPage} exact />
-        <HomeTemPlate path="/about" Component={AboutPage} exact />
+        {/* <HomeTemPlate path="/" Component={HomePage} exact /> */}
+        {/* <HomeTemPlate path="/contact" Component={ContactPage} exact />
+        <HomeTemPlate path="/about" Component={AboutPage} exact /> */}
+        {/* <HomeTemPlate path="/profile" Component={Profile} exact /> */}
+        {/* <JiraTemplate path="/jira" exact Component={indexJira} /> */}
         <UserLoginTemplate exact path="/login" Component={LoginJira} />
-        <HomeTemPlate path="/profile" Component={Profile} exact />
-        <JiraTemplate path="/jira" exact Component={indexJira} />
+        <JiraTemplate path="/create-project" exact Component={CreateProjects} />
+        <JiraTemplate path="/" exact Component={ProjectManagement} />
         <JiraTemplate
-          path="/create-project"
+          path="/project-detail/:projectId"
           exact
-          Component={CreateProjects}
+          Component={DetailJira}
         />
-        <JiraTemplate path="/projects" exact Component={ProjectManagement} />
       </Switch>
     </>
   );

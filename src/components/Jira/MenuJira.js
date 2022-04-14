@@ -20,7 +20,7 @@ export default function MenuJira() {
             <NavLink
               className="text-dark ml-2"
               activeClassName="active font-weight-bold"
-              to="/jira"
+              to="/"
             >
               Jira Board
             </NavLink>
@@ -40,7 +40,7 @@ export default function MenuJira() {
             <NavLink
               className="text-dark ml-2"
               activeClassName="active font-weight-bold"
-              to="/projects"
+              to="/"
             >
               Projects Management
             </NavLink>

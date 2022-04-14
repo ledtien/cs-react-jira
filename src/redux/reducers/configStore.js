@@ -6,6 +6,12 @@ import { loadingReducer } from "./LoadingReducer";
 import { HistoryReducer } from "./HistoryReducer";
 import { UserJiraReducer } from "./UserJiraReducer";
 import { ProjectCategoryJiraReducer } from "./ProjectCategoryJiraReducer";
+import { ProjectJiraReducer } from "./ProjectJiraReducer";
+import { DrawerJiraReducer } from "./DrawerJiraReducer";
+import { FormProjectReducer } from "./FormProjectReducer";
+import { TaskTypeReducer } from "./TaskTypeReducer";
+import { PriorityReducer } from "./PriorityReducer";
+import { StatusReducer } from "./StatusReducer";
 
 const middleWareSaga = createMiddleWareSaga();
 
@@ -16,6 +22,12 @@ const rootReducer = combineReducers({
   HistoryReducer,
   UserJiraReducer,
   ProjectCategoryJiraReducer,
+  ProjectJiraReducer,
+  DrawerJiraReducer,
+  FormProjectReducer,
+  TaskTypeReducer,
+  PriorityReducer,
+  StatusReducer,
 });
 const store = createStore(rootReducer, applyMiddleware(middleWareSaga));
 // gan middleware moi run saga

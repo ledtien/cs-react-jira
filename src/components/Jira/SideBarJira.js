@@ -1,34 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
+import { Layout, Menu } from "antd";
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  PlusCircleOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { OPEN_FORM_CREATE_TASK } from "../../redux/contants/CloneJira/Jira";
+import FormCreateTask from "./Forms/FormCreateTask/FormCreateTask";
 
 export default function SideBarJira() {
+  const dispatch = useDispatch();
+
+  const { Sider } = Layout;
+  const [state, setState] = useState({
+    collapsed: false,
+  });
+
+  const toggle = () => {
+    setState({
+      collapsed: !state.collapsed,
+    });
+  };
   return (
     <>
-      <div className="sideBar">
-        <div className="sideBar-top">
-          <div className="sideBar-icon">
-            <i className="fab fa-jira" />
-          </div>
-          <div
-            className="sideBar-icon"
-            data-toggle="modal"
-            data-target="#searchModal"
-            style={{ cursor: "pointer" }}
+      <Sider trigger={null} collapsible collapsed={state.collapsed}>
+        <div
+          onClick={toggle}
+          style={{
+            textAlign: "right",
+            color: "white",
+            cursor: "pointer",
+            paddingRight: "8px",
+            fontSize: "18px",
+          }}
+        >
+          {state.collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </div>
+        <div className="logo" />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu.Item
+            key="1"
+            icon={<PlusCircleOutlined />}
+            onClick={() => {
+              dispatch({
+                type: OPEN_FORM_CREATE_TASK,
+                Component: <FormCreateTask />,
+                title: "Create task",
+              });
+            }}
           >
-            <i className="fa fa-search" />
-            <span className="title">SEARCH ISSUES</span>
-          </div>
-          <div className="sideBar-icon">
-            <i className="fa fa-plus" />
-            <span className="title">CREATE ISSUES</span>
-          </div>
-        </div>
-        <div className="sideBar-bottom">
-          <div className="sideBar-icon">
-            <i className="fa fa-question-circle" />
-            <span className="title">ABOUT</span>
-          </div>
-        </div>
-      </div>
+            Create task
+          </Menu.Item>
+          <Menu.Item key="2" icon={<SearchOutlined />}>
+            Search
+          </Menu.Item>
+        </Menu>
+      </Sider>
     </>
   );
 }
