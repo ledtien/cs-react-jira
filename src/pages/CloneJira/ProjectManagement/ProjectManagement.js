@@ -27,12 +27,10 @@ import {
 import FormEditProject from "../../../components/Jira/Forms/FormEditProject/FormEditProject";
 
 function confirm(e) {
-  console.log(e);
   message.success("Click on Yes");
 }
 
 function cancel(e) {
-  console.log(e);
   message.error("Click on No");
 }
 

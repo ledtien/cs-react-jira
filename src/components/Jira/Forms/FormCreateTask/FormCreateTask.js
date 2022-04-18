@@ -35,7 +35,6 @@ function FormCreateTask(props) {
   const { arrPriority } = useSelector((state) => state.PriorityReducer);
   const { arrUser } = useSelector((state) => state.UserJiraReducer);
   const { arrStatus } = useSelector((state) => state.StatusReducer);
-  console.log(arrStatus);
 
   const children = [];
   // const { Option } = Select;
@@ -48,7 +47,6 @@ function FormCreateTask(props) {
   const userOption = arrUser.map((user, index) => {
     return { value: user.userId, label: user.name };
   });
-  console.log(userOption);
 
   useEffect(() => {
     dispatch({ type: GET_ALL_PROJECTS_SAGA_LIST });
@@ -70,7 +68,6 @@ function FormCreateTask(props) {
   });
 
   const handleChangeSelect = (value) => {
-    console.log(`selected ${value}`);
     setFieldValue("listUserAsign", value);
   };
 
@@ -194,9 +191,7 @@ function FormCreateTask(props) {
           options={userOption}
           optionFilterProp="label"
           onChange={handleChangeSelect}
-          onSelect={(value) => {
-            console.log(value);
-          }}
+          onSelect={(value) => {}}
         >
           {children}
         </Select>
@@ -297,7 +292,6 @@ const FormCreateTaskFormik = withFormik({
   validationSchema: yup.object().shape({}),
 
   handleSubmit: (values, { props, setSubmitting }) => {
-    console.log("values", values);
     props.dispatch({ type: CREATE_TASK_SAGA, taskObject: values });
   },
 

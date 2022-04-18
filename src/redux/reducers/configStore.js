@@ -12,6 +12,7 @@ import { FormProjectReducer } from "./FormProjectReducer";
 import { TaskTypeReducer } from "./TaskTypeReducer";
 import { PriorityReducer } from "./PriorityReducer";
 import { StatusReducer } from "./StatusReducer";
+import { TaskDetailReducer } from "./TaskDetailReducer";
 
 const middleWareSaga = createMiddleWareSaga();
 
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   TaskTypeReducer,
   PriorityReducer,
   StatusReducer,
+  TaskDetailReducer,
 });
 const store = createStore(rootReducer, applyMiddleware(middleWareSaga));
 // gan middleware moi run saga

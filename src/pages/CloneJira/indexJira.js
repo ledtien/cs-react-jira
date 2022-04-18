@@ -11,7 +11,6 @@ export default function DetailJira(props) {
 
   useEffect(() => {
     let { projectId } = props.match.params;
-    console.log(projectId);
     dispatch({ type: GET_PROJECT_DETAIL_SAGA, projectId: projectId });
   }, []);
 

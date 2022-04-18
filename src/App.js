@@ -11,6 +11,7 @@ import LoginJira from "./pages/CloneJira/LoginJira/LoginJira";
 import ProjectDetail from "./pages/CloneJira/ProjectDetail/ProjectDetail";
 import ProjectManagement from "./pages/CloneJira/ProjectManagement/ProjectManagement";
 import ContactPage from "./pages/Contact/ContactPage";
+import DragAndDrop from "./pages/DemoDragAndDrop/DragAndDrop";
 import HomePage from "./pages/Home/HomePage";
 import Profile from "./pages/Profile/Profile";
 import { HomeTemPlate } from "./templates/HomeTemplate";
@@ -36,6 +37,7 @@ function App() {
         {/* <HomeTemPlate path="/profile" Component={Profile} exact /> */}
         {/* <JiraTemplate path="/jira" exact Component={indexJira} /> */}
         <UserLoginTemplate exact path="/login" Component={LoginJira} />
+        <UserLoginTemplate exact path="/drag" Component={DragAndDrop} />
         <JiraTemplate path="/create-project" exact Component={CreateProjects} />
         <JiraTemplate path="/" exact Component={ProjectManagement} />
         <JiraTemplate

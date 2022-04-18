@@ -182,7 +182,6 @@ function* getUserByProjectSaga(action) {
     const { data, status } = yield call(() => {
       return userService.getUserByProjectId(action.projectId);
     });
-    console.log(data);
     if (status === STATUS_CODE.SUCCESS) {
       yield put({ type: GET_USER_BY_PROJECT, arrUser: data.content });
     }
